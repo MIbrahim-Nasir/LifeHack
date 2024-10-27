@@ -66,5 +66,4 @@ For any questions or suggestions, feel free to reach out:
 - **GitHub**: [MIbrahim-Nasir](https://github.com/MIbrahim-Nasir)
 
 ---
-
-I hope you like this version! If you need any more tweaks, just let me know. 😊
+😊
