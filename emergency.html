@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency - AI Health Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header-controls">
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <em>Dark Mode</em>
+        </div>
+        <button id="logoutButton" onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <main>
+        <h1>Emergency Services</h1>
+        
+        <div id="userProfile"></div>
+        
+        <div id="emergencyContent">
+            <h2>Emergency Contacts</h2>
+            <ul>
+                <li>Emergency Services: 911</li>
+                <li>Poison Control: 1-800-222-1222</li>
+                <!-- Add more emergency contacts as needed -->
+            </ul>
+
+            <h2>First Aid Assistant</h2>
+            <form id="injuryForm">
+                <div class="image-picker">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="injuryImage" name="injuryImage" accept="image/*">
+                        <label for="injuryImage" class="file-input-label" id="injuryImageLabel">Upload Injury Image</label>
+                    </div>
+                </div>
+                <div class="text-input-wrapper">
+                    <textarea id="injuryDescription" name="injuryDescription" placeholder="Or describe the injury here"></textarea>
+                </div>
+                <div class="prompt-box">
+                    <button type="submit">Analyze Injury</button>
+                    <div id="generatingloader" class="loader"></div>
+                </div>
+            </form>
+            <div id="aiResponse" class="ai-response"></div>
+        </div>
+    </main>
+
+    <script src="profile.js"></script>
+    <script src="emergency.js" type="module"></script>
+    <script src="https://unpkg.com/heic2any@0.0.3/dist/heic2any.min.js"></script>
+    <script>
+        window.onload = function() {
+            displayUserProfile();
+        }
+
+        // Add dark mode toggle functionality
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }    
+        }
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
+        const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+    </script>
+</body>
+</html>
