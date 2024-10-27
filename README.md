@@ -1,6 +1,8 @@
 # LifeHack
 ![Screenshot 2024-10-02 215129](https://github.com/user-attachments/assets/da14f248-cf4a-447a-b817-f0e49f2d18ba)
 
+# Demo Video
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Features](#features)
